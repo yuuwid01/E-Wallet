@@ -1,16 +1,12 @@
 
 // Class Entitas
 public class Pulsa {
-    String nominalPulsa;
-    String hargaPulsa;
+    VoucherPulsa vPulsa;
+    String kodeVoucher;
 
-    public Pulsa(String nominalPulsa, String hargaPulsa) {
-        this.nominalPulsa = nominalPulsa;
-        this.hargaPulsa = hargaPulsa;
+    public Pulsa(VoucherPulsa vPulsa, int totalBayar) {
+        this.vPulsa = vPulsa;
+        this.kodeVoucher = NumericString.generate(16);
     }
 
-    public void dataPulsa() {
-        System.out.println("Nominal Pulsa   : " + nominalPulsa);
-        System.out.println("Harga Pulsa     : " + hargaPulsa);
-    }
 }

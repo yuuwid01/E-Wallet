@@ -1,20 +1,19 @@
+import java.util.ArrayList;
 
 // Class Core (Inti)
 public class EWallet {
-    static User userLogged = null;
+    static ArrayList<User> akunTerdaftar = new ArrayList<>();
 
-    public static void login() {
+    public static void initialUser() {
+        User user = new User("Test", "user", "1", "081", "123");
 
-    }
-
-    public static void register() {
-    }
-
-    public static void verifPin() {
+        Auth.register(user);
 
     }
 
-    public static void logout() {
-
+    public static int cekSaldo(User user) {
+        return user.dompet.saldo.saldo;
     }
+
+
 }

@@ -14,8 +14,12 @@ public class Saldo {
         saldo += nominal;
     }
 
-    public void ambilSaldo(int nominal) {
-        // ...
+    public boolean ambilSaldo(int nominal) {
+        if (saldo >= nominal) {
+            saldo -= nominal;
+            return true;
+        }
+        return false;
     }
 
     public void dataSaldo() {

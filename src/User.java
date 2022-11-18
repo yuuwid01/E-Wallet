@@ -6,8 +6,10 @@ public class User {
     String pin;
     Dompet dompet;
 
-    public User(String nama, String username, String password,
-            String noTelp, String pin) {
+    public User() {
+    }
+
+    public User(String nama, String username, String password, String noTelp, String pin) {
         this.nama = nama;
         this.username = username;
         this.password = password;

@@ -18,12 +18,4 @@ public class User {
         this.dompet = new Dompet();
     }
 
-    public void dataUser() {
-        System.out.println("Nama            : " + nama);
-        System.out.println("Username        : " + username);
-        System.out.println("Password        : " + password);
-        System.out.println("No Telp         : " + noTelp);
-        System.out.println("PIN             : " + pin);
-        dompet.dataDompet();
-    }
 }

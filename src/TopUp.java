@@ -1,13 +1,9 @@
 
 // Class Entitas
-public class TopUp {
-    int nominalTopup;
+public class TopUp extends Transaksi {
 
     public TopUp(int nominalTopup) {
-        this.nominalTopup = nominalTopup;
+        super("Top Up", nominalTopup, nominalTopup);
     }
 
-    public void dataTopUp() {
-        System.out.println("Nominal Topup   : " + nominalTopup);
-    }
 }

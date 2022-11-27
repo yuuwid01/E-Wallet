@@ -3,10 +3,10 @@
 public class Transaksi {
     String jenisTransaksi;
     String tanggalTransaksi;
-    String nominalHarga;
-    String totalBayar;
+    int nominalHarga;
+    int totalBayar;
 
-    public Transaksi(String jenisTransaksi, String nominalHarga, String totalBayar) {
+    public Transaksi(String jenisTransaksi, int nominalHarga, int totalBayar) {
         this.jenisTransaksi = jenisTransaksi;
         this.tanggalTransaksi = LocalDate.now();
         this.nominalHarga = nominalHarga;

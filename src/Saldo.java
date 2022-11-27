@@ -22,7 +22,4 @@ public class Saldo {
         return false;
     }
 
-    public void dataSaldo() {
-        System.out.println("Saldo           : " + saldo);
-    }
 }

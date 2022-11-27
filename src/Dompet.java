@@ -14,9 +14,12 @@ public class Dompet {
         this.pemasukan = pemasukan;
     }
 
-    public void dataDompet() {
-        saldo.dataSaldo();
-        System.out.println("Pemasukan       : " + pemasukan);
-        System.out.println("Pengeluaran     : " + pengeluaran);
+    public void tambahTransaksi(Transaksi transaksi) {
+        if (transaksi instanceof TopUp) {
+            pemasukan += transaksi.nominalHarga;
+        } else {
+            pengeluaran += transaksi.totalBayar;
+        }
+        daftarTransaksi.add(transaksi);
     }
 }

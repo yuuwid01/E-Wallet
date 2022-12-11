@@ -1,5 +1,9 @@
 import java.util.ArrayList;
 
+import entity.TopUp;
+import entity.Transaksi;
+import entity.User;
+
 // Class Core (Inti)
 public class EWallet {
     private static ArrayList<User> akunTerdaftar = new ArrayList<>();
@@ -12,18 +16,18 @@ public class EWallet {
     }
 
     public static int cekSaldo(User user) {
-        return user.dompet.saldo.saldo;
+        return user.getDompet().getSaldo().getSaldo();
     }
 
     public static void topUp(User user, TopUp transaksi) {
-        user.dompet.tambahTransaksi(transaksi);
-        user.dompet.saldo.tambahSaldo(transaksi.nominalHarga);
+        user.getDompet().tambahTransaksi(transaksi);
+        user.getDompet().getSaldo().tambahSaldo(transaksi.getNominalHarga());
     }
 
     public static boolean beliPulsa(User user, Transaksi transaksi) {
-        boolean status = user.dompet.saldo.ambilSaldo(transaksi.nominalHarga);
+        boolean status = user.getDompet().getSaldo().ambilSaldo(transaksi.getNominalHarga());
         if (status) {
-            user.dompet.tambahTransaksi(transaksi);
+            user.getDompet().tambahTransaksi(transaksi);
         }
         return status;
     }

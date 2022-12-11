@@ -1,3 +1,4 @@
+package entity;
 
 // Class Entitas
 public class TopUp extends Transaksi {

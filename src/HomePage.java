@@ -1,6 +1,14 @@
 
 import java.util.Scanner;
 
+import entity.Pulsa;
+import entity.TopUp;
+import entity.Transaksi;
+import entity.User;
+import entity.VoucherPulsa;
+import entity.Dompet;
+import utils.Rupiah;
+
 public class HomePage {
     private Scanner scanner = new Scanner(System.in);
 
@@ -89,7 +97,7 @@ public class HomePage {
                 System.out.println();
             } else {
                 VoucherPulsa pulsa = Storage.getPulsaList().get(pilih - 1);
-                int totalHarga = pulsa.harga;
+                int totalHarga = pulsa.getHarga();
 
                 int percobaan = 3;
                 do {
@@ -97,17 +105,17 @@ public class HomePage {
                     String pin = scanner.nextLine();
 
                     if (Auth.verifPin(pin)) {
-                        if (akun.dompet.saldo.saldo >= totalHarga) {
+                        if (akun.getDompet().getSaldo().getSaldo() >= totalHarga) {
                             Pulsa transaksiBaru = new Pulsa(pulsa, totalHarga);
 
                             EWallet.beliPulsa(akun, transaksiBaru);
 
                             System.out.println("Kamu telah membeli Voucher Pulsa senilai Rp."
-                                    + Rupiah.format(pulsa.harga));
-                            System.out.println("Voucher        : " + pulsa.title);
-                            System.out.println("Seharga        : Rp." + Rupiah.format(pulsa.harga));
+                                    + Rupiah.format(pulsa.getHarga()));
+                            System.out.println("Voucher        : " + pulsa.getTitle());
+                            System.out.println("Seharga        : Rp." + Rupiah.format(pulsa.getHarga()));
                             System.out.println("Total          : Rp." + Rupiah.format(totalHarga));
-                            System.out.println("Kode Voucer    : " + transaksiBaru.kodeVoucher);
+                            System.out.println("Kode Voucer    : " + transaksiBaru.getKodeVoucher());
                             System.out.println("----------------------------------------------");
                             System.out.print("Lanjut...");
                             scanner.nextLine();
@@ -185,9 +193,9 @@ public class HomePage {
             String pin = scanner.nextLine();
 
             if (Auth.verifPin(pin)) {
-                int saldo = akun.dompet.saldo.saldo;
-                int pemasukan = akun.dompet.pemasukan;
-                int pengeluaran = akun.dompet.pengeluaran;
+                int saldo = akun.getDompet().getSaldo().getSaldo();
+                int pemasukan = akun.getDompet().getPemasukan();
+                int pengeluaran = akun.getDompet().getPengeluaran();
                 System.out.printf("Pemasukan      : Rp.%s\n", Rupiah.format(pemasukan));
                 System.out.printf("Pengeluaran    : Rp.%s\n", Rupiah.format(pengeluaran));
                 System.out.printf("Saldo saat ini : Rp.%s\n", Rupiah.format(saldo));
@@ -210,22 +218,22 @@ public class HomePage {
 
     private void lihatTransaksi() {
         User akun = Auth.getUserLogged();
-        Dompet dompet = akun.dompet;
+        Dompet dompet = akun.getDompet();
 
         System.out.println("------------------ TRANSAKSI -----------------");
 
-        for (Transaksi pembelian : dompet.daftarTransaksi) {
+        for (Transaksi pembelian : dompet.getDaftarTransaksi()) {
 
             if (pembelian instanceof Pulsa) {
                 Pulsa pulsa = (Pulsa) pembelian;
-                System.out.println("Tanggal Pembelian  : " + pembelian.tanggalTransaksi);
-                System.out.println("Pulsa              : Rp." + pulsa.vPulsa.title);
-                System.out.println("Harga              : Rp." + Rupiah.format(pulsa.vPulsa.harga));
-                System.out.println("Bayar              : Rp." + Rupiah.format(pembelian.totalBayar));
-                System.out.println("Kode Voucher       : " + pulsa.kodeVoucher);
+                System.out.println("Tanggal Pembelian  : " + pembelian.getTanggalTransaksi());
+                System.out.println("Pulsa              : Rp." + pulsa.getvPulsa().getTitle());
+                System.out.println("Harga              : Rp." + Rupiah.format(pulsa.getvPulsa().getHarga()));
+                System.out.println("Bayar              : Rp." + Rupiah.format(pembelian.getTotalBayar()));
+                System.out.println("Kode Voucher       : " + pulsa.getKodeVoucher());
             } else {
-                System.out.println("Tanggal TopUp      : " + pembelian.tanggalTransaksi);
-                System.out.println("Nominal TopUp      : Rp." + pembelian.nominalHarga);
+                System.out.println("Tanggal TopUp      : " + pembelian.getTanggalTransaksi());
+                System.out.println("Nominal TopUp      : Rp." + pembelian.getNominalHarga());
             }
             System.out.println("----------------------------------------------");
         }

@@ -1,6 +1,9 @@
 
 import java.util.ArrayList;
 
+import entity.VoucherPulsa;
+import utils.Rupiah;
+
 public class Storage {
     private static ArrayList<VoucherPulsa> pulsaList = new ArrayList<>();
 
@@ -21,8 +24,8 @@ public class Storage {
 
         for (VoucherPulsa pulsa : pulsaList) {
             System.out.println(i + ". "
-                    + pulsa.title
-                    + " (Rp." + Rupiah.format(pulsa.harga)
+                    + pulsa.getTitle()
+                    + " (Rp." + Rupiah.format(pulsa.getHarga())
                     + ")");
             i += 1;
         }

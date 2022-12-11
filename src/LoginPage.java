@@ -1,6 +1,8 @@
 
 import java.util.Scanner;
 
+import entity.User;
+
 public class LoginPage {
     Scanner scanner = new Scanner(System.in);
 

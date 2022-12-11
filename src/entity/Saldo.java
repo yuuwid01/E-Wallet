@@ -1,7 +1,8 @@
+package entity;
 
 // Class Entitas
 public class Saldo {
-    int saldo = 0;
+    private int saldo = 0;
 
     public Saldo() {
     }
@@ -20,6 +21,14 @@ public class Saldo {
             return true;
         }
         return false;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
     }
 
 }

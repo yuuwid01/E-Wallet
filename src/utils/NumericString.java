@@ -1,3 +1,4 @@
+package utils;
 public class NumericString {
 
     public static String generate(int length) {
